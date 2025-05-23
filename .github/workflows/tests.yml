@@ -34,11 +34,13 @@ jobs:
         run: robot -d ./logs -i tests
       - name: Robot Reporter
         uses: joonvena/robotframework-reporter-action@f99583edc5902bd73a61df5c37d1321bc38890ca
+        if: always()
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
           report_path: logs
       - name: upload Report
         uses: actions/upload-artifact@4.3.1
+        if: always()
         with:
           name: Test Report
           path: logs
